@@ -1,0 +1,4 @@
+/venv
+/fixtures
+
+db.sqlite3

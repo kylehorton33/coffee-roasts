@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="roastlist-container">
+  <h1>Roasts ☕</h1>
+  <ul>
+    {% for roast in object_list %}
+      <li><a href="/roasts/{{ roast.slug }}">{{ roast }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock content %}

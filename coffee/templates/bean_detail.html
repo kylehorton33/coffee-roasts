@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="roastlist-container">
+  {% if object.photo %}
+  <img src="{{ object.photo.url }}" alt="Photo of {{ object.name }}" style="display: block; max-height: 50vh; max-width: 90%;">
+  {% endif %}
+  <br>
+  <h1>{{ object.name }}</h1>
+  <small>{{  object.public_id }}</small>
+  <p>{{object.description}}</p>
+  <h2>Details</h2>
+  <div class="row">
+    <div class="col"><strong>Supplier: </strong><a href="{{ object.supplier_website }}">{{ object.supplier }}</a></div>
+  </div>
+  <div class="row">
+    <div class="col"><strong>Region:</strong> {{ object.region }}</div>
+    <div class="col"><strong>Variety:</strong> {{ object.variety }}</div>
+  </div>
+</div>
+
+{% endblock content %}

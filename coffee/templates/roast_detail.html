@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="roastlist-container">
+  <h1>{{ object.bean.name }} - {{ object.degree_of_roast }}</h1>
+  <small>Roasted On: {{ object.roasted_on | date:"l M. j, Y" }} ({{ object.days_since_roast }} days since roast)</small>
+  <br><br>
+  <h4>Details</h4>
+  <ul>
+    <li><strong>Batch Size: </strong>{{object.roast_quantity}} g ({{object.weight_loss}}% loss)</li>
+    <li><strong>Roaster: </strong>Behmor 2000AB</li>
+    <li><strong>Roast Time: </strong>13:45</li>
+    <li><strong>Time Past 1st Crack: </strong>1:25</li>
+  </ul>
+  <a href="/{{object.roast_log.name }}">Download Roast Details [{{object.roast_log.name}}]</a>
+</div>
+
+{% endblock content %}
