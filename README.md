@@ -1,6 +1,8 @@
 # Set up for development:
 
 - `git clone https://github.com/kylehorton33/coffee-roasts.git`
+- `cd coffee-roasts/`
+- Create and activate your virtual environment: e.g. `python3 -m venv venv`
 - `pip install -r requirement.txt`
 - `python manage.py migrate`
 - `python manage.py createsuperuser`
