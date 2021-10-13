@@ -38,6 +38,9 @@ class Bean(models.Model):
   certified_fairtrade = models.BooleanField(default=False) # False
   certified_rainforestalliance = models.BooleanField(default=False) # False
 
+  class Meta:
+    ordering = ['-delivered_on']
+
   def __str__ (self):
     date = self.delivered_on.strftime("%b-%Y")
     return f'{self.name} ({date} {self.supplier})'
@@ -56,6 +59,9 @@ class Roast(models.Model):
   degree_of_roast = models.CharField(max_length=140) # Full City
 
   roast_log = models.FileField(upload_to='uploads/')
+
+  class Meta:
+    ordering = ['-roasted_on']
 
   def days_since_roast(self):
     diff = timezone.now() - self.roasted_on
