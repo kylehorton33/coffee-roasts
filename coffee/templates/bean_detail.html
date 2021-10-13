@@ -15,9 +15,25 @@
     <div class="col"><strong>Supplier: </strong><a href="{{ object.supplier_website }}">{{ object.supplier }}</a></div>
   </div>
   <div class="row">
-    <div class="col"><strong>Region:</strong> {{ object.region }}</div>
-    <div class="col"><strong>Variety:</strong> {{ object.variety }}</div>
+    <div class="col"><strong>Delivered On:</strong> {{ object.delivered_on }}</div>
   </div>
+  <div class="row">
+    <div class="col"><strong>Country:</strong> {{ object.country }}</div>
+    <div class="col"><strong>Region:</strong> {{ object.region }}</div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="col"><strong>Variety:</strong> {{ object.variety }}</div>
+    </div>
+  </div>
+  {% if object.altitude_min > 0 %}
+  <div class="row">
+    <div class="col">
+      <div class="col"><strong>Altitude:</strong> {{ object.altitude_min }} - {{ object.altitude_max }} m</div>
+    </div>
+  </div>
+  {% endif %}
+
 </div>
 
 {% endblock content %}
