@@ -41,6 +41,9 @@ class Bean(models.Model):
   class Meta:
     ordering = ['-delivered_on']
 
+  def get_url(self):
+    return f"/beans/{self.slug}"
+
   def __str__ (self):
     date = self.delivered_on.strftime("%b-%Y")
     return f'{self.name} ({date} {self.supplier})'
