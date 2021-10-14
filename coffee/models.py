@@ -65,7 +65,7 @@ class Roast(models.Model):
 
   def days_since_roast(self):
     diff = timezone.now() - self.roasted_on
-    return round(diff.seconds / (60*60*24))
+    return round(diff.total_seconds() / (60*60*24))
 
   def weight_loss(self):
     q1 = self.green_quantity
