@@ -10,3 +10,7 @@
 - `python manage.py loaddata fixtures/db-` (complete with current db json file)
 - `python manage.py runserver`
 - ☕
+
+## Future Ideas
+- 'Useful Forms': Roasting Notes template, espresso shot notes, operating manuals
+- `Extraction` model for logging brews with specific roasts
