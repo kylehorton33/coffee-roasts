@@ -12,6 +12,7 @@ class RoastListView(ListView):
 
 class BeanListView(ListView):
   model = Bean
+  paginate_by = 10
 
 class RoastDetailView(DetailView):
   model = Roast
