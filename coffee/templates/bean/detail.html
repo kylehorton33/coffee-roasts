@@ -33,6 +33,15 @@
     </div>
   </div>
   {% endif %}
+  <br>
+  {% if object.get_roasts %}
+    <ul>
+      {% for roast in object.get_roasts %}
+        <li><a href="{{roast.get_url}}">{{roast}}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  
 
 </div>
 

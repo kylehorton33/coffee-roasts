@@ -44,6 +44,10 @@ class Bean(models.Model):
   def get_url(self):
     return f"/beans/{self.slug}"
 
+  def get_roasts(self):
+    roasts = Roast.objects.filter(bean=self.id)
+    return roasts
+
   def __str__ (self):
     date = self.delivered_on.strftime("%b-%Y")
     return f'{self.name} ({date} {self.supplier})'
@@ -66,6 +70,9 @@ class Roast(models.Model):
   class Meta:
     ordering = ['-roasted_on']
 
+  def get_url(self):
+    return f"/roasts/{self.slug}"
+
   def days_since_roast(self):
     diff = timezone.now() - self.roasted_on
     return round(diff.total_seconds() / (60*60*24))
@@ -76,7 +83,7 @@ class Roast(models.Model):
     return round((q1-q2)/q1*100, 1)
 
   def __str__ (self):
-    date = self.roasted_on.strftime("%b-%Y")
-    return f'{self.bean.name} - {self.degree_of_roast} ({date})'
+    date = self.roasted_on.strftime("%d %b %Y")
+    return f'{date} ({self.bean.name} - {self.degree_of_roast})'
 
   
