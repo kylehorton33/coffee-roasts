@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="extraction-container">
+  <h1>Extraction - IN PROGRESS</h1>
+  <div class="timer">
+    <span id="clock">0.0</span> s
+    <button id="timer-button" class="start" onclick="startCount();">Start Timer</button>
+  </div>
+
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+const clock = document.getElementById("clock");
+const button = document.getElementById("timer-button")
+const delay = 100
+let ms = 0
+const timer = () => {
+    ms += delay
+    clock.innerHTML = (ms/1000).toFixed(1)
+};
+var countdown;
+
+function startCount() {
+    if (button.innerHTML === 'Start Timer') {
+        ms = 0 
+        countdown = setInterval(timer, delay)
+        button.innerHTML = 'Stop Timer'
+        button.className = 'stop'
+    } else {
+        clearInterval(countdown);
+        button.innerHTML = 'Start Timer'
+        button.className = 'start'
+    }
+    
+}  
+
+function stopCount() {
+    
+}
+
+
+</script>
+
+<style>
+.start {
+    background-color: green;
+}
+.stop {
+    background-color: red;
+}
+</style>
+
+{% endblock scripts %}
+
+
+
+

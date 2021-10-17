@@ -12,4 +12,5 @@ urlpatterns = [
     path('signup/', TemplateView.as_view(template_name="auth/signup.html")),
     path('login/', TemplateView.as_view(template_name="auth/login.html")),
     path('files/', FileListView.as_view(template_name="files.html")),
+    path('extraction/new', TemplateView.as_view(template_name="extraction/new.html")),
 ]
