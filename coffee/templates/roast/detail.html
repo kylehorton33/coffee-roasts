@@ -15,7 +15,9 @@
     <li><strong>Roast Time: </strong>{{ object.roast_time }}</li>
     <li><strong>Time Past 1st Crack: </strong>{{ object.time_past_first_crack }}</li>
   </ul>
-  <a href="{{ object.roast_log.url }}">Download Roast Details [{{object.roast_log.name}}]</a>
+  {% if object.roast_log %}
+    <a href="{{ object.roast_log.url }}">Download Roast Details [{{object.roast_log.name}}]</a>
+  {% endif %}
 </div>
 
 {% endblock content %}
