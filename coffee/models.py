@@ -3,6 +3,7 @@ from django.db.models.base import ModelState
 from django.utils import timezone
 
 from uuid import uuid4
+from math import floor
 
 # Create your models here.
 
@@ -61,7 +62,10 @@ class Roast(models.Model):
   # mandatory fields
   bean = models.ForeignKey(Bean, blank=False, on_delete=models.CASCADE)
   green_quantity = models.DecimalField(help_text="Starting weight in grams", max_digits=5, decimal_places=1)
-  roast_quantity = models.DecimalField(help_text="Yeild weight in grams", max_digits=5, decimal_places=1)
+  roast_quantity = models.DecimalField(help_text="Yield weight in grams", max_digits=5, decimal_places=1)
+  roaster = models.CharField(max_length=255, default="Behmor 2000AB Plus")
+  time_to_first_crack = models.PositiveIntegerField(help_text="Time to first crack in seconds")
+  time_to_cooling = models.PositiveIntegerField(help_text="Time to cooling in seconds")
   roasted_on = models.DateTimeField() # default to current time? , change to DateField
   degree_of_roast = models.CharField(max_length=140) # Full City
 
@@ -81,6 +85,17 @@ class Roast(models.Model):
     q1 = self.green_quantity
     q2 = self.roast_quantity
     return round((q1-q2)/q1*100, 1)
+
+  def roast_time(self):
+    mm = floor(self.time_to_cooling / 60)
+    ss = str(self.time_to_cooling % 60).zfill(2)
+    return f'{mm}:{ss}'
+
+  def time_past_first_crack(self):
+    diff = self.time_to_cooling - self.time_to_first_crack
+    mm = floor(diff / 60)
+    ss = str(diff % 60).zfill(2)
+    return f'{mm}:{ss}'
 
   def __str__ (self):
     date = self.roasted_on.strftime("%d %b %Y")
