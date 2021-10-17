@@ -1,7 +1,7 @@
 from django.urls import path
 from django.views.generic import TemplateView
 
-from .views import RoastListView, BeanListView, RoastDetailView, BeanDetailView
+from .views import RoastListView, BeanListView, RoastDetailView, BeanDetailView, FileListView
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name="home.html")),
@@ -11,4 +11,5 @@ urlpatterns = [
     path('beans/', BeanListView.as_view(template_name="bean/list.html")),
     path('signup/', TemplateView.as_view(template_name="auth/signup.html")),
     path('login/', TemplateView.as_view(template_name="auth/login.html")),
+    path('files/', FileListView.as_view(template_name="files.html")),
 ]

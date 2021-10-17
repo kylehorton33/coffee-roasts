@@ -86,4 +86,16 @@ class Roast(models.Model):
     date = self.roasted_on.strftime("%d %b %Y")
     return f'{date} ({self.bean.name} - {self.degree_of_roast})'
 
-  
+
+class File(models.Model):
+  # auto fields
+  created_date = models.DateTimeField(auto_now_add=True)
+  last_modified = models.DateTimeField(auto_now=True)
+  slug = models.SlugField(default=assign_id, editable=False)
+
+  display_name = models.CharField(max_length=255)
+  file = models.FileField(upload_to='files/')
+
+  def __str__(self):
+    date = self.last_modified.strftime("%d %b %Y")
+    return f'{self.file} ({date})'

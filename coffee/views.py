@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Bean, Roast
+from .models import Bean, Roast, File
 
 from django.views.generic import ListView
 
@@ -20,5 +20,7 @@ class RoastDetailView(DetailView):
 class BeanDetailView(DetailView):
   model = Bean
 
+class FileListView(ListView):
+  model = File
   
 
