@@ -66,7 +66,7 @@ class Roast(models.Model):
   roaster = models.CharField(max_length=255, default="Behmor 2000AB Plus")
   time_to_first_crack = models.PositiveIntegerField(help_text="Time to first crack in seconds")
   time_to_cooling = models.PositiveIntegerField(help_text="Time to cooling in seconds")
-  roasted_on = models.DateTimeField(default=timezone.now) # default to current time? , change to DateField
+  roasted_on = models.DateTimeField() # default to current time? , change to DateField
   degree_of_roast = models.CharField(max_length=140) # Full City
 
   roast_log = models.FileField(upload_to='uploads/', blank=True, null=True)
