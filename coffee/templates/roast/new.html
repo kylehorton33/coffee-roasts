@@ -28,9 +28,15 @@ const id_roasted_on = document.getElementById("id_roasted_on")
 const crack_input = document.getElementById("id_time_to_first_crack")
 const cool_input = document.getElementById("id_time_to_cooling")
 const roast_timer = document.getElementById("roast_timer")
+const id_roast_level = document.getElementById("id_roast_level")
+document.getElementsByTagName('label')[7].innerHTML = `Roast Level (5):`
 let roast_time;
 let start;
 let timer;
+
+id_roast_level.addEventListener('change', (event) => {
+  document.getElementsByTagName('label')[7].innerHTML = `Roast Level (${event.target.value}):`
+}); 
 
 function startTimer() {
   id_roasted_on.value = new Date().toISOString()
@@ -74,6 +80,12 @@ function setCoolTime() {
 <style>
 select {
   width: 100%;
+}
+input {
+  width: 100%;
+}
+th {
+  width: 40%;
 }
 </style>
 {% endblock scripts %}

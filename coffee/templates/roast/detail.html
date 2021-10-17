@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="roastlist-container">
-  <h1>{{ object.bean.name }} - {{ object.degree_of_roast }}</h1>
+  <h1>{{ object.bean.name }} - {{ object.roast_level }}</h1>
   <small>Roasted On: {{ object.roasted_on | date:"l M. j, Y" }} ({{ object.days_since_roast }} days since roast)</small>
   <br>
   <small><a href="{{ object.bean.get_url }}">{{ object.bean }}</a></small>

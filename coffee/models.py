@@ -1,6 +1,9 @@
+from django.core import validators
 from django.db import models
+from django.db.models.aggregates import Max
 from django.db.models.base import ModelState
 from django.utils import timezone
+from django.core.validators import MaxValueValidator
 
 from uuid import uuid4
 from math import floor
@@ -67,7 +70,8 @@ class Roast(models.Model):
   time_to_first_crack = models.PositiveIntegerField(help_text="Time to first crack in seconds")
   time_to_cooling = models.PositiveIntegerField(help_text="Time to cooling in seconds")
   roasted_on = models.DateTimeField() # default to current time? , change to DateField
-  degree_of_roast = models.CharField(max_length=140) # Full City
+  roast_level = models.PositiveIntegerField(default=5, validators=[MaxValueValidator(10)])
+
 
   roast_log = models.FileField(upload_to='uploads/', blank=True, null=True)
 
@@ -99,7 +103,7 @@ class Roast(models.Model):
 
   def __str__ (self):
     date = self.roasted_on.strftime("%d %b %Y")
-    return f'{date} ({self.bean.name} - {self.degree_of_roast})'
+    return f'{date} ({self.bean.name} - {self.roast_level})'
 
 
 class File(models.Model):
