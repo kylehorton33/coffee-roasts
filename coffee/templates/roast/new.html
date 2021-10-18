@@ -24,6 +24,12 @@
 
 {% block scripts %}
 <script>
+const id = new URLSearchParams(window.location.search).get("id")
+if (id) {
+  console.log(id)
+  document.getElementById("id_bean").value = id
+}
+
 const id_roasted_on = document.getElementById("id_roasted_on")
 const crack_input = document.getElementById("id_time_to_first_crack")
 const cool_input = document.getElementById("id_time_to_cooling")
