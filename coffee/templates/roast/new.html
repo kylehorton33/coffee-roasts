@@ -29,6 +29,10 @@ const crack_input = document.getElementById("id_time_to_first_crack")
 const cool_input = document.getElementById("id_time_to_cooling")
 const roast_timer = document.getElementById("roast_timer")
 const id_roast_level = document.getElementById("id_roast_level")
+const help_start = document.getElementById("help_start")
+const help_crack = document.getElementById("help_crack")
+const help_cool = document.getElementById("help_cool")
+
 document.getElementsByTagName('label')[7].innerHTML = `Roast Level (5):`
 let roast_time;
 let start;
@@ -42,6 +46,7 @@ function startTimer() {
   id_roasted_on.value = new Date().toISOString()
   document.getElementById("start").disabled = true
   document.getElementById("crack").disabled = false
+  help_start.remove()
   start = Date.now()
   timer = setInterval(() => {
     roast_time = Date.now() - start
@@ -64,12 +69,14 @@ function parseTimer(roast_time) {
 function setCrackTime() {
   document.getElementById("crack").disabled = true
   document.getElementById("cool").disabled = false
+  help_crack.remove()
   const ss = Math.floor(roast_time/1000)
   crack_input.value = ss
 }
 
 function setCoolTime() {
   document.getElementById("cool").disabled = true
+  help_cool.remove()
   const ss = Math.floor(roast_time/1000)
   cool_input.value = ss
   clearInterval(timer)
