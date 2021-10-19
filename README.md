@@ -11,6 +11,10 @@
 - `python manage.py runserver`
 - ☕
 
+## To create new db fixture:
+- `python manage.py dumpdata coffee --indent 4 --foat json > fixtures/db-YYYYMMDD-hhmmss.json` (with current time)
+
+
 ## Future Ideas
 - 'Useful Forms': Roasting Notes template, espresso shot notes, operating manuals
 - `Extraction` model for logging brews with specific roasts
